@@ -64,3 +64,23 @@ const getJSON = function (url, errMessage) {
     return response.json();
   });
 };
+
+
+// const whereami = function() {
+// esto es igual a la
+
+
+function whoami (lat,long){
+
+  const url ='https://geocode.xyz/${lat},${long}geoit=json';
+  fetch(url)
+  .then(response ==>response.json())
+  .then (data ==>{
+    // obtener pais y  llamar a getCountryData
+  })
+  
+  // completar el ejercio el enunciado esta en el README
+  } 
+  
+  
+  
