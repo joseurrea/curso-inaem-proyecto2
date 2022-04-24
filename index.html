@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
 
-    <title>Asynchronous JavaScript</title>
-  </head>
-  <body>
-    <button id="btnPais">Obtener paises</button>
-    <main class="container">
-      <div class="countries">
-        <!--
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Bootstrap CSS -->
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Asynchronous JavaScript</title>
+  <style>
+    body {
+      background-image: url("globo2.gif");
+      background-position: center 25%;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="form-container" class="form-container">
+    <h2> Localización del país</h2>
+    <hr>
+    <div class="form-block">
+      <label class="form-label" for="lat">Latitud </label>
+      <input class="form-control" type="text" name="lat" id="lat" placeholder="->:(40.463667)" />
+    </div>
+    <div class="form-block">
+      <label class="form-label" for="long">Longitud</label>
+      <input class="form-control" type="text" name="long" id="long" placeholder="->:(-3.74922)" />
+    </div>
+    <div class="form-block">
+      <div class="mt-2">
+        <button class="submit btn btn-success" id="btnPais" value="submit" name="submit" type="submit"
+          class="form-control">Vamos</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="containerCountries">
+    <div class="countries">
+      <!--
         <article class="country">
           <img class="country__img" src="" />
           <div class="country__data">
@@ -24,8 +53,9 @@
           </div>
         </article>
         -->
-      </div>
-    </main>
-    <script defer src="./script.js"></script>
-  </body>
+    </div>
+  </main>
+  <script defer src="./script.js"></script>
+</body>
+
 </html>

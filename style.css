@@ -3,24 +3,28 @@
   padding: 0;
   box-sizing: inherit;
 }
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+
 body {
   font-family: system-ui;
   color: #555;
-  background-color: #f7f7f7;
+  background-image: linear-gradient(to top left, #ccc73f 0%, #54b89f 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.container {
+
+.containerCountries {
   display: flex;
   flex-flow: column;
   align-items: center;
 }
+
 .countries {
   /* margin-bottom: 8rem; */
   display: flex;
@@ -29,6 +33,7 @@ body {
   transition: opacity 1s;
   flex-wrap: wrap;
 }
+
 .country {
   background-color: #fff;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
@@ -38,6 +43,7 @@ body {
   margin: 0 3rem;
   /* overflow: hidden; */
 }
+
 .neighbour::before {
   content: 'Neighbour country';
   width: 100%;
@@ -47,12 +53,15 @@ body {
   font-size: 1.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #888;
+  color: #fff;
+
 }
+
 .neighbour {
   transform: scale(0.8) translateY(1rem);
   margin-left: 0;
 }
+
 .country__img {
   width: 30rem;
   height: 17rem;
@@ -61,27 +70,33 @@ body {
   border-top-left-radius: 0.7rem;
   border-top-right-radius: 0.7rem;
 }
+
 .country__data {
   padding: 2.5rem 3.75rem 3rem 3.75rem;
 }
+
 .country__name {
   font-size: 2.7rem;
   margin-bottom: 0.7rem;
 }
+
 .country__region {
   font-size: 1.4rem;
   margin-bottom: 2.5rem;
   text-transform: uppercase;
   color: #888;
 }
+
 .country__row:not(:last-child) {
   margin-bottom: 1rem;
 }
+
 .country__row span {
   display: inline-block;
   margin-right: 2rem;
   font-size: 2.4rem;
 }
+
 .btn-country {
   border: none;
   font-size: 2rem;
@@ -91,14 +106,17 @@ body {
   background-color: orangered;
   cursor: pointer;
 }
+
 .images {
   display: flex;
 }
+
 .images img {
   display: block;
   width: 80rem;
   margin: 4rem;
 }
+
 .images img.parallel {
   width: 40rem;
   margin: 2rem;
@@ -106,17 +124,11 @@ body {
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.form-container {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.75rem;
+  background-color: rgb(87, 179, 164);
+  border-radius: 0.7rem;
+  padding: 2rem;
+  box-shadow: rgb(17, 201, 158) 2px 2px;
+}

@@ -1,70 +1,76 @@
-console.log('Testa start')
-setTimeout(() ==> {
+// 1º sincrono -> 2º callback promesas -> 3º callback general
 
 
-console.log('Timer de o segundos')
+console.log(`test start`);
+setTimeout(() =>{
+console.log(`Timer de 0 segundos`);
 },0);
 
-Promise.resolve('Resolve promise 1').then(resolve==>console.log(resolve))
+Promise.resolve('resolve primse').then(res => console.log(res));
 
-Promise.resolve('Resolve promise 2').then(resolve==>console.log(resolve==>{
-     for (let i=0; i<1000000000; i++){}
-     console.log(resolve)
-}))
+Promise.resolve('resolve primse 2').then(res => {
+    for(let i = 0; i < 1000000; i++){}
+    console.log(res)
+});
 
+console.log(`test end`);
 
-const promesa = new Promise (function(resolve,reject) [
+// la respuesta a la promesa se vera tras 5 segundos
+const promesa = new Promise ((resolve,reject) =>
+{  
+    console.log(`promesa iniciada`);
+    setTimeout(() =>{
+Math.random() > 0.5 ? resolve('ganaste') : reject (new Error ('perdiste'));
+},5000);
 
+});
 
-]);
-
-const lotterypromise = new Promise (function(resolve,reject) [
-
-    console.log("Promesa iniciada")
-    Math.random() > 0.5 ?resolve ('Ganaste') :
-     reject(new Error('Perdiste'));
-
-]);
-
-lotterypromise
-.then(resolve==> console.log(resolve))
-.catch(err ==> console.log(error));
+promesa
+.then(res => console.log(res))
+.catch(err => console.log(err))
 
 
-//PROMISIFY/
+// PROMISIFY (Para evitar Callback Hell)
+// Mejor mantenimiento del codigo y mas legible
 
+// sin promisify:
 
-setTimeout(()  ==> { 
-    console.log('Ha pasado un segundo')
-    setTimeout(()  ==> { 
-        console.log('Ha pasado 2 segundo')
-        setTimeout(()  ==> { 
-            console.log('Ha pasado 3 segundo')
-            setTimeout(()  ==> { 
-                console.log('Ha pasado 4 segundo')
-            },4000);
-        },3000);
-    },2000);
-},1000);
+setTimeout(() => {
+    console.log(`Ha pasado un segundo`);
+    setTimeout(() => {
+        console.log(`han paado 2 segundos mas`);
+        setTimeout(() => {
+         console.log(`han paado 3 segundos mas`);
+            setTimeout(() => {
+             console.log(`han paado 4 segundos mas`);
+             }, 4000);
+         }, 3000);
+    }, 2000);
+}, 1000);
 
+// con promisify 
 
-
-// convertir el codigo anterior a promise para
-
-const waitPromise1 = new Promise((resolve, reject) => {
-    setTimeout(() ==> { 
-        resolve("Ha pasado 1 segundo")
-    },1000)
+const wait = (segundos)=>{
+    return Promise(resolve =>{
+        setTimeout(() => {
+            resolve(` Han pasado ${segundos} segundos`)
+        }, segundos*1000);
+    })
+}
+wait(1)
+.then((res) => {
+    console.log(res);
+    return wait(2);
 })
-
-const waitPromise2 = new Promise((resolve, reject) => {
-    setTimeout(() ==> { 
-        resolve("Ha pasado 2 segundo")
-    },2000)
+.then((res) => {
+    console.log(res);
+    return wait(3);
 })
+.then((res) => {
+    console.log(res);
+    return wait(4);
+})
+.then((res) => {
+    console.log(res);
 
-const waitPromise3 = new Promise((resolve, reject) => {
-    setTimeout(() ==> { 
-        resolve("Ha pasado 1 segundo")
-    },3000)
 })

@@ -1,6 +1,7 @@
 const countryContainer = document.querySelector(".countries");
 const boton = document.querySelector("#btnPais");
-console.log(boton);
+
+const formContainer = document.querySelector("#form-container");
 
 const renderCountry = (data, optionalClass = "") => {
   const country = data.name.common;
@@ -16,9 +17,9 @@ const renderCountry = (data, optionalClass = "") => {
           <div class="country__data">
             <h3 class="country__name">${country}</h3>
             <h4 class="country__region">${region}</h4>
-            <p class="country__row">${population}</p>
-            <p class="country__row">${language}</p>
-            <p class="country__row">${currency.name}(${currency.symbol})</p>
+            <p class="country__row"><b>Population:</b> ${population}</p>
+            <p class="country__row"><b>Languages:</b> ${language}</p>
+            <p class="country__row"><b>Currency:</b> ${currency.name}(${currency.symbol})</p>
           </div>
         </article>
     `;
@@ -52,35 +53,41 @@ const getCountryData = function (country) {
 };
 
 boton.addEventListener("click", () => {
-  getCountryData("australia");
-  boton.style.display = "none";
+  const lat = document.getElementById('lat').value
+  const long = document.getElementById('long').value
+  console.log(lat, long)
+  formContainer.style.display = "none";
+  whereami(lat, long)
+
 });
 
-const getJSON = function (url, errMessage) {
-  return fetch(url).then((response) => {
-    if (!response.ok) {
-      throw Error(errMessage);
+// const getJSON = function (url, errMessage) {
+//   return fetch(url).then((response) => {
+//     if (!response.ok) {
+//       throw Error(errMessage);
+//     }
+//     return response.json();
+//   });
+// };
+
+// -----------------------------------------------------------
+
+function whereami(lat,long)
+{
+  const url =`https://geocode.xyz/${lat},${long}?geoit=json`
+  fetch(url)
+  .then(response =>
+    { 
+     if (!response.ok) {
+      throw Error('no se ha podido manejar la solicitud');
     }
     return response.json();
-  });
-};
-
-
-// const whereami = function() {
-// esto es igual a la
-
-
-function whoami (lat,long){
-
-  const url ='https://geocode.xyz/${lat},${long}geoit=json';
-  fetch(url)
-  .then(response ==>response.json())
-  .then (data ==>{
-    // obtener pais y  llamar a getCountryData
+    })
+  .then(data =>{
+    // obtener pais y llamar a getCountryData
+    getCountryData(data.country);
+    console.log(data);
+    console.log(`Estás en ${data.city}, ${data.country}.`);
   })
-  
-  // completar el ejercio el enunciado esta en el README
-  } 
-  
-  
-  
+  .catch(err => console.log(err.message, 'error'))
+}

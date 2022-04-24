@@ -9,7 +9,7 @@ npm install
 
 **PARTE 1**
 
-1. Crea una  función *whereami* que coja como entrada la longitud (lat) y la longitud(lng). Esto son coordenadas GPS, abajo de proporciono datos de ejemplo.
+1. Crea una  función *whereami* que coja como entrada la latitud (lat) y la longitud(lng). Esto son coordenadas GPS, abajo de proporciono datos de ejemplo.
 
 2. Haz  geolocalización inversa de las coordenadas. Geolocalización inversa significa convertir las coordenadas a una localidad y un país. Usa esta API para conseguirlo: https://geocode.xyz/api. La llamada tendrá el siguiente formato: https://geocode.xyz/52.508,13.381?geoit=json. Usa la fetch API y  promesas.
 
